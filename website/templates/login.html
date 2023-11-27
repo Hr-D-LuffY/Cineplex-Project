@@ -1,0 +1,56 @@
+{% extends "signup.html" %} 
+{% block title %}LOGIN{% endblock %}
+<!-- change the nav login link to signup  -->
+{% block about_link %}/signup{% endblock %}
+{% block about_name %}signup{% endblock %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+        {% for category, message in messages %} 
+          {% if category =='error' %}
+            <div class="alert alert-danger alter-dismissable fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% else %}
+            <div class="alert alert-success  fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endif %} 
+        {% endfor %} 
+    {% endif %} 
+{% endwith %}
+
+{% block content %}
+<div class="banner bg-transparent p-5 ">
+    <div class="form_area card container  w-50 bg-secondary bg-gradient m-auto p-0">
+        <div class="card-header  d-flex justify-content-center bg-dark bg-gradient ">
+            <h3 class="text-white">Login To Cinetickets</h3>
+        </div>
+        <div class="form card-body">
+            <form action="" method="POST" class=" d-grid gap-2">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control"  name="password" id="password">
+                <input class="btn btn-primary mt-2" type="submit" value="Log In">
+            </form>
+        </div>
+        <div class="card-footer d-flex justify-content-center gap-2 m-3 ">
+            <h6>Did you have an account yet?</h6>
+            <a href="/signup" class=" link-underline link-underline-opacity-0" style="color: purple;">Register</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block footer%}
+<button type="button"><a href="/admin">ADMIN</a></button>
+{% endblock%}
