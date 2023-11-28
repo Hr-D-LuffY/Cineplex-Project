@@ -80,7 +80,7 @@ def admin():
             session['username'] = user[1]
             print('success')
             flash('u just login',category='success')
-            return redirect(url_for('auth.signup'))
+            return redirect(url_for('views.adminpanel',id=session['user_id']))
         else:
             flash('Invalid username or password',category='error')
             return render_template('login.html')

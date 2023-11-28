@@ -367,6 +367,7 @@ add_running_show("Savar", 2, "Jawan", "2023-12-08 17:00:00")
 add_running_show("Uttora", 1, "Surongo", "2023-12-08 19:00:00")
 add_running_show("Uttora", 2, "Godfather", "2023-12-08 15:00:00")
 add_running_show("Uttora", 3, "The Dark Knight", "2023-12-14 14:30:00")
+rem_running_show("Uttora", 3, "The Dark Knight", "2023-12-14 14:00:00")
 
 
 #Running_show Table Done

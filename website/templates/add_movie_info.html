@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Movie Info</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <!-- main project navber  -->
+        <nav class="bg-dark">
+            <div class="container row m-auto d-flex  align-items-center">
+                <div class="logo_container col-md-6 col-6 col-sm-6">
+                    <h1 class="text-white">BRAC</h1>
+                    <h1 class="text-white">CINEPLEX</h1>
+                </div>
+                <div class="menus_container col-md-6 col-6 col-sm-6 d-md-flex justify-content-md-end">
+                    <a href="/adminpanel/{{user}}" class="btn btn-primary btn-md active" role="button" >Admin Panel</a>
+        </div>
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+        {% for category, message in messages %} 
+            {% if category =='error' %}
+                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %} 
+        {% endfor %} {% endif %} {% endwith %}
+        
+<!-- main sign up form content area  -->
+    <div>
+        <div class="banner bg-transparent p-5 ">
+            <div class="form_area card container  w-50 bg-secondary bg-gradient m-auto p-0">
+                <div class="card-header  d-flex justify-content-center bg-dark bg-gradient ">
+                    <h3 class="text-white">Add New Movie Info</h3>
+                </div>
+                <div class="form card-body">
+                    <form action="" method="POST" class=" d-grid gap-2">
+                        <label for="Movie_name" class="form-label">Movie name</label>
+                        <input type="text" class="form-control" name="Movie_name" id="Movie_name" required>
+                        
+                        <label for="Release_Date" class="form-label">Release Date</label>
+                        <input type="Date" class="form-control" name="Release_Date" id="Release_Date" required>
+
+                        <label for="Director" class="form-label">Director</label>
+                        <input type="text" class="form-control" name="Director" id="Director" required>
+                        
+                        <label for="Cast" class="form-label">Cast</label>
+                        <input type="text" class="form-control" name="Cast" id="Cast" required>
+                        
+                        <label for="Genre" class="form-label">Genre</label>
+                        <input type="text" class="form-control" name="Genre" id="Genre" required>
+                        
+                        <label for="Language" class="form-label">Language</label>
+                        <input type="text" class="form-control" name="Language" id="Language" required>
+        
+                        <label for="Image_link" class="form-label">Image Link</label>
+                        <input type="url" class="form-control"  name="Image_link" id="Image_link">
+                        <input class="btn btn-primary mt-2" type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+	
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

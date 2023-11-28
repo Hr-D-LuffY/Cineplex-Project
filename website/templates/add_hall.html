@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Hall Info</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <!-- main project navber  -->
+        <nav class="bg-dark">
+            <div class="container row m-auto d-flex  align-items-center">
+                <div class="logo_container col-md-6 col-6 col-sm-6">
+                    <h1 class="text-white">BRAC</h1>
+                    <h1 class="text-white">CINEPLEX</h1>
+                </div>
+                <div class="menus_container col-md-6 col-6 col-sm-6 d-md-flex justify-content-md-end">
+                    <a href="/adminpanel/{{user}}" class="btn btn-primary btn-md active" role="button" >Admin Panel</a>
+        </div>
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+        {% for category, message in messages %} 
+            {% if category =='error' %}
+                <div class="alert alert-danger alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %} 
+        {% endfor %} {% endif %} {% endwith %}
+
+<!-- main sign up form content area  -->
+    <div>
+        <div class="banner bg-transparent p-5 ">
+            <div class="form_area card container  w-50 bg-secondary bg-gradient m-auto p-0">
+                <div class="card-header  d-flex justify-content-center bg-dark bg-gradient ">
+                    <h3 class="text-white">Add New Hall Info</h3>
+                </div>
+                <div class="form card-body">
+                    <form action="" method="POST" class=" d-grid gap-2">
+                        <label for="Branch_name" class="form-label">Branch name</label>
+                        <input type="text" class="form-control" name="Branch_name" id="Branch_name" required>
+                        
+                        <label for="Hall_no" class="form-label">Hall No.</label>
+                        <input type="number" class="form-control" name="Hall_no" id="Hall_no" required>
+
+                        <label for="Seat_Capacity" class="form-label">Seat Capacity</label>
+                        <input type="number" class="form-control" name="Seat_Capacity" id="Seat_Capacity" required>
+                        
+                        <label for="Type" class="form-label">Type</label>
+                        <input type="text" class="form-control" name="Type" id="Type" required>
+                        
+                        <input class="btn btn-primary mt-2" type="submit" value="SUBMIT">
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+	
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script></body>
+</html>
