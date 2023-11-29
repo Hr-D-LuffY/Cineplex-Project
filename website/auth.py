@@ -29,9 +29,6 @@ def signup():
             query='SELECT * FROM users WHERE email = %s'
             cursor.execute(query,(email,))
             existing_user= cursor.fetchone()
-
-            
-
             if existing_user:
                 error='Email already connected to another account. PLease choose a diff email!'
                 flash('Email already connected to another account. PLease choose a diff email!',category='error')
@@ -58,7 +55,7 @@ def login():
             session['user_id'] = user[0]
             session['username'] = user[1]
             print('success')
-            flash('u just login',category='success')
+            flash('You Just login',category='success')
             # return redirect(url_for('auth.signup'))
         else:
             flash('Invalid email or password',category='error')
@@ -79,10 +76,9 @@ def admin():
             session['user_id'] = user[0]
             session['username'] = user[1]
             print('success')
-            flash('u just login',category='success')
             return redirect(url_for('views.adminpanel',id=session['user_id']))
         else:
             flash('Invalid username or password',category='error')
-            return render_template('login.html')
+            return render_template('admin.html')
 
     return render_template("admin.html")

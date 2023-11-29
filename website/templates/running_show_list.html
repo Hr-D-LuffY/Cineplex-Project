@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deposite</title>
+    <title>Userslist</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -27,16 +27,31 @@
         </nav>
     </header>
 
-    <h1 class="text-center fw-bold display-2 mt-4 p-1"><u>Deposite Box</u></h1>
-  <!-- table section  -->
+    <h1 class="text-center fw-bold display-2 mt-4 p-1"><u>Running Show List</u></h1>
+
+    <!-- table & filter section  -->
     <div class="table-responsive container mt-4 p-5">
+        <!-- dropdown filter section here  -->
+        <div class="dropdownsection my-4">
+          <form action="/runningShowList/{{id}}" method="post">
+            <label for="order_by">Order By:  </label>
+            <select name="order_by" id="order_by">
+                <option value="Branch_Name">Branch Name</option>
+                <option value="Movies_Name">Movies Name</option>
+            </select>
+            <input class="btn btn-primary "  type="submit" value="Submit">
+          </form>
+        </div>  
+        <!-- table section  -->
         <table class="table table-hover table-info table-striped">
             <thead class="table-warning">
               <tr>
-                <th scope="col">Deposite Id</th>
-                <th scope="col">User id</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Time</th>
+                <th scope="col">Show ID</th>
+                <th scope="col">Branch Name</th>
+                <th scope="col">Hall no</th>
+                <th scope="col">Movie Name</th>
+                <th scope="col">Show Time</th>
+                <th scope="col">Remove</th>
               </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -46,12 +61,16 @@
                   <td>{{ user_data[1] }}</td>
                   <td>{{ user_data[2] }}</td>
                   <td>{{ user_data[3] }}</td>
+                  <td>{{ user_data[4] }}</td>
+                  <!-- remove section  -->
+                  <td><form id="removeForm" action="/runningShowList/{{id}}" method="post">
+                   <button type="submit" class="btn btn-primary" name="remove_button" value="{{ user_data[0] }}">Remove</button>
+                 </form></td>
                 </tr>
               {% endfor %}
             </tbody>
           </table>
     </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

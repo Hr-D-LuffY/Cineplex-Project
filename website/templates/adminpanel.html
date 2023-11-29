@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <header>
@@ -15,36 +16,146 @@
         <nav class="bg-dark">
             <div class="container row m-auto d-flex  align-items-center">
                 <div class="logo_container col-md-6 col-6 col-sm-6">
-                    <h1 class="text-white">BRAC</h1>
-                    <h1 class="text-white">CINEPLEX</h1>
+                    <a href="/" class="link-underline link-underline-opacity-0">
+                        <h1 class="orange">TVA</h1>
+                        <h1 class="text-white">CINEMAPLEX</h1>
+                    </a>
                 </div>
+                <!-- navbar link section  -->
+                <div class="menus_container col-md-6 col-6 col-sm-6 d-md-flex justify-content-md-end">
+					        <a href="/admin" 
+                    class="btn btn-primary btn-md active" role="button" > Log Out</a>
+                </div>
+
             </div>
         </nav>
     </header>
 
 
-<!-- main sign up form content area  -->
-    <div class="mainbox d-block p-5">
-        <h1 class="text-center fw-bolder "><u>WELCOME {{user[3] }}</u></h1>
-        <a href="/addMovieInfo/{{user[0]}}" class="d-block text-dark fw-bold">Add Movie Info</a>
-        <a href="/addHallInfo/{{user[0]}}"class="d-block text-dark fw-bold">Add New Hall Info</a>
-        <a href="/addrunningShow/{{user[0]}}"class="d-block text-dark fw-bold">Add Running Show</a>
-        <a href="http://"class="d-block text-dark fw-bold">Remove Running Show</a>
-        <a href="/userlist/{{user[0]}}"class="d-block text-dark fw-bold">All Users List</a>
-        <a href="/deposite/{{user[0]}}"class="d-block text-dark fw-bold">Deposite Box</a>
-        <a href="/transaction/{{user[0]}}"class="d-block text-dark fw-bold">Transaction</a>
-        <a href="/booked_seat/{{user[0]}}"class="d-block text-dark fw-bold">Booked seat</a>
-    </div>
-	
-    <style>
-        .mainbox{
-            height: 80vh;
-            background-color: aquamarine;
-            list-style: none;
-            font-size: larger;
 
-        }
-    </style>
+<!-- main sign up form content area  -->
+<div class="mainbox">
+    <h1 class="text-center display-3 fw-bolder p-3"><u>WELCOME <span class="orange text-uppercase"> {{user[3] }}</span></u></h1>
+    <div class="w-75 m-auto d-flex text-center gap-3 mt-3 ">
+        <div class="addmovieinfo  w-25">
+            <div class="card acard  p-5">
+                <div class="card-body">
+                  <h5 class="fw-bolder fs-2 card-title mb-3">Add Movie Info</h5>
+                  <a href="/addMovieInfo/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="addhallInfo  w-25">
+            <div class="card acard p-5">
+                <div class="card-body">
+                  <h5 class="fw-bolder fs-2 card-title mb-3">Add New Hall Info</h5>
+                  <a href="/addHallInfo/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="addrunningshow  w-25">
+            <div class="card acard p-5">
+                <div class="card-body">
+                  <h5 class="fw-bolder fs-2 card-title mb-3">Add Running Show</h5>
+                  <a href="/addrunningShow/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="remrunningshow  w-25">
+            <div class="card acard  p-4">
+                <div class="card-body">
+                  <h5 class="fw-bolder fs-2 card-title mb-3">Remove Running Show</h5>
+                  <a href="/runningShowList/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="w-75 m-auto d-flex text-center gap-3 mt-3 ">
+        <div class="userlist  w-25 ">
+            <div class="card acard p-4">
+                <div class="card-body">
+                  <h5 class="fw-bolder fs-1 card-title mb-5">All Users List</h5>
+                  <a href="/userlist/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="deposite  w-25">
+            <div class="card acard p-4">
+                <div class="card-body">
+                  <h5 class="fw-bolder display-6 card-title mb-5">Deposite Box</h5>
+                  <a href="/deposite/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="transaction  w-25">
+            <div class="card acard  p-4">
+                <div class="card-body">
+                  <h5 class="fw-bolder display-6 card-title mb-5">Transaction</h5>
+                  <a href="/transaction/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+        <div class="booked_seat  w-25">
+            <div class="card acard p-4">
+                <div class="card-body">
+                  <h5 class="fw-bolder display-6 card-title mb-5">Booked seat</h5>
+                  <a href="/booked_seat/{{user[0]}}" class="btn btn-primary">Let's GO</a>
+                </div>
+            </div>
+        </div>  
+    </div>   
+</div>
+
+<!-- Footer section -->
+<footer class="footer-distributed">
+    <div class="footer-left">
+        <h3 class="orange"><span class="orange">TVA</span> <span>Cinemaplex</span></h3>
+        <p class="footer-links">
+            <a href="#" class="link-1">Home</a>
+            
+            <a href="#">Blog</a>
+        
+            <a href="#">Pricing</a>
+        
+            <a href="#">About</a>
+            
+            <a href="#">Faq</a>
+            
+            <a href="#">Contact</a>
+        </p>
+        <p class="footer-company-name">TVA Cinemaplex © 2023</p>
+    </div>
+
+    <div class="footer-center">
+        <div>
+            <i class="fas fa-map-marker-alt"></i>
+            <p><span>Mirpur-1 / Savar / Bashundara</span> Dhaka, Bangladesh</p>
+        </div>
+        <div>
+            <i class="fas fa-phone"></i>
+            <p>+8801222334456</p>
+        </div>
+        <div>
+            <i class="far fa-envelope"></i>
+            <p><a href="mailto:support@company.com">support@tvacinemaplex.com</a></p>
+        </div>
+    </div>
+
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            TVA Cinemaplex: where movies come alive
+        </p>
+        <div class="footer-icons">
+            <a href="#"><i class="fab fa-facebook"></i></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></i></a>
+            <a href="#"><i class="fab fa-github"></i></i></a>
+
+        </div>
+    </div>
+
+</footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

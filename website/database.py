@@ -342,18 +342,38 @@ def add_running_show(branch_name, hall_num, movie_name, show_time):
 
 
 #Function to delete any movie from the table
-def rem_running_show(branch_name, hall_num, movie_name, show_time):
+def rem_running_show(show_ID):
     conn = create_connection()
     cursor = conn.cursor()
 
-    query = "DELETE FROM running_show WHERE branch_name = %s AND hall_num = %s AND movie_name = %s AND show_time = %s"
-    values = (branch_name, hall_num, movie_name, show_time)
+    query = f"DELETE FROM running_show WHERE show_ID = {show_ID} "
 
-    cursor.execute(query, values)
+    cursor.execute(query)
     conn.commit()
-
     cursor.close()
     conn.close()
+def running_showOrderByMovie():
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT * FROM cineplex.running_show order by movie_name;'
+    cursor.execute(query)
+    return cursor.fetchall()
+    # cursor.close()
+    # conn.close()
+
+def running_showOrderByBranch():
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT * FROM cineplex.running_show order by branch_name;'
+    cursor.execute(query)
+
+    return cursor.fetchall()
+    # cursor.close()
+    # conn.close()
+
+
 
 add_running_show("Basundhara", 1, "The Shawshank Redemption", "2023-12-08 19:00:00")
 add_running_show("Basundhara", 2, "The Godfather", "2023-11-28 17:00:00")
@@ -366,8 +386,7 @@ add_running_show("Savar", 1, "Pulp Fiction", "2023-12-15 15:00:00")
 add_running_show("Savar", 2, "Jawan", "2023-12-08 17:00:00")
 add_running_show("Uttora", 1, "Surongo", "2023-12-08 19:00:00")
 add_running_show("Uttora", 2, "Godfather", "2023-12-08 15:00:00")
-add_running_show("Uttora", 3, "The Dark Knight", "2023-12-14 14:30:00")
-rem_running_show("Uttora", 3, "The Dark Knight", "2023-12-14 14:00:00")
+add_running_show("Uttora", 3, "Jawan", "2023-12-14 14:30:00")
 
 
 #Running_show Table Done

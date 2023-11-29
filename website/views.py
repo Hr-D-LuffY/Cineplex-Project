@@ -112,3 +112,28 @@ def addrunningShow(id):
         cursor.close()
         conn.close()
     return render_template("add_runningShow.html",user=id)
+
+@views.route('/runningShowList/<id>', methods=["GET","POST"])
+def runningShowList(id):
+    if request.method=="POST":
+        order_by = request.form.get('order_by')
+        remove_button = request.form.get('remove_button')
+        
+        runningshow= running_showOrderByBranch()
+
+        if remove_button :
+            rem_running_show(remove_button)
+            runningshow= running_showOrderByBranch()
+            return render_template('running_show_list.html',user=runningshow,id=id)
+        if order_by=="Movies_Name":
+            runningshow=running_showOrderByMovie()
+            return render_template('running_show_list.html',user=runningshow,id=id)
+        elif order_by=="Branch_Name":
+            runningshow= running_showOrderByBranch()
+            return render_template('running_show_list.html',user=runningshow,id=id)
+        else:
+            runningshow= running_showOrderByBranch()
+            return render_template('running_show_list.html',user=runningshow,id=id)
+        
+        
+    return render_template('running_show_list.html', id=id)
