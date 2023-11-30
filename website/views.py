@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template,request,flash
+from flask import Blueprint, render_template,request,flash,redirect,url_for
 from .database import *
 
 views = Blueprint('views',__name__)
@@ -65,14 +65,14 @@ def userlist(id):
     userslist=cursor.fetchall()
     return render_template('userlist.html',user=userslist,id=id)
 
-@views.route('/deposite/<id>', methods=["GET","POST"])
-def deposite(id):
+@views.route('/deposite_box/<id>', methods=["GET","POST"])
+def deposite_box(id):
     conn=create_connection()
     cursor=conn.cursor()
     query='SELECT * FROM deposite'
     cursor.execute(query)
     deposite=cursor.fetchall()
-    return render_template('deposite.html',user=deposite,id=id)
+    return render_template('deposite_box.html',user=deposite,id=id)
 
 @views.route('/transaction/<id>', methods=["GET","POST"])
 def transaction(id):
@@ -134,6 +134,52 @@ def runningShowList(id):
         else:
             runningshow= running_showOrderByBranch()
             return render_template('running_show_list.html',user=runningshow,id=id)
-        
-        
     return render_template('running_show_list.html', id=id)
+
+@views.route('/dashboard/<id>',methods=["GET","POST"])
+def dashboard(id):
+    user=check_userByID(id)
+    print(user)
+    flash('You Just login',category='success')
+    print(id)
+    return render_template("dashboard.html",user=user, id=id)
+
+@views.route('/profile/<id>',methods=["GET","POST"])
+def profile(id):
+    user=check_userByID(id)
+    return render_template("profile.html",user=user, id=id)
+
+@views.route('/update_password/<id>', methods=["GET","POST"])
+def updatepassword(id):
+    user=check_userByID(id)
+    if request.method=="POST":
+        opassword= request.form.get('opassword')
+        npassword= request.form.get('npassword')
+        conpasword= request.form.get('conpassword')
+        user=check_userByID(id)
+        print(user[5])
+        if user[5]==opassword and npassword==conpasword:
+            updatePassword(npassword,id)
+            flash("Your Password has been Changed",category='success')
+            return render_template('update-password.html',user=user, id=id)
+        elif user[5]!=opassword:
+            flash("Old Password doesn't match",category='error')
+            return render_template('update-password.html',user=user, id=id)
+        elif npassword!=conpasword:
+            flash("New Password doesn't match",category='error')
+            return render_template('update-password.html',user=user, id=id)
+    return render_template('update-password.html',user=user, id=id)
+
+@views.route('/deposite/<id>',methods=["GET","POST"])
+def deposite(id):
+    user=check_userByID(id)
+    if request.method=="POST":
+        deposite_money= request.form.get('deposite_money')
+        user=check_userByID(id)
+        print(user[5])
+        if int(deposite_money)>0:
+            depositemoney(id,deposite_money)
+            user=check_userByID(id)
+            return redirect(url_for('views.profile',user=user,id=id))
+    return render_template("deposite.html",user=user,id=id)
+

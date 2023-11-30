@@ -97,6 +97,42 @@ def check_user(email,password):
 
     return user
 
+def check_userByID(id):
+    conn = create_connection()
+    cursor =conn.cursor()
+
+    query='SELECT * FROM users WHERE id= %s'
+    cursor.execute(query,(id,))
+    user=cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    return user
+
+def updatePassword(password,id):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query = f"UPDATE users SET password='{password}' WHERE id={id};"
+    cursor.execute(query)
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+def depositemoney(id,money):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query = f"UPDATE users SET amount=amount+{money} WHERE id={id};"
+    cursor.execute(query)
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+
 #User TABLE Done
 ############################################################################
 

@@ -180,6 +180,26 @@ nav{
         .orange{
             color: orangered;
         }
+        .profileclr{
+            /* background-color:#F8EFF4; */
+            background-color: rgb(210, 230, 233);
+        }
+        .profile_menu{
+            width: 30%;
+            height: 60vh;
+        }
+        .basicinfo{
+            width:55%;
+            height: 60vh;
+        }
+        .basicinfo p {
+            margin-bottom:2px;
+        }
+        .basicinfo td {
+            color: orangered;
+            font-weight: 600;
+        }
+        
         /* If you don't want the footer to be responsive, remove these media queries */
 
         @media (max-width: 880px) {

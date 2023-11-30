@@ -54,13 +54,11 @@ def login():
             # Store user information in the session
             session['user_id'] = user[0]
             session['username'] = user[1]
-            print('success')
-            flash('You Just login',category='success')
-            # return redirect(url_for('auth.signup'))
+
+            return redirect(url_for('views.dashboard',id=session['user_id']))
         else:
             flash('Invalid email or password',category='error')
             return render_template('login.html')
-    
     return render_template("login.html")
 
 @auth.route('/admin',methods=['GET','POST'])
@@ -75,7 +73,6 @@ def admin():
             # Store user information in the session
             session['user_id'] = user[0]
             session['username'] = user[1]
-            print('success')
             return redirect(url_for('views.adminpanel',id=session['user_id']))
         else:
             flash('Invalid username or password',category='error')

@@ -36,7 +36,7 @@
 
 
 <!-- main sign up form content area  -->
-<div class="mainbox profileclr">
+<div class="profileclr">
     <div class="container d-flex justify-content-between">
         <!-- left area  -->
         <div class="profile_menu my-4 card text-bg-light">
@@ -76,6 +76,14 @@
                                 <td>{{ user[4] }}</td>
                             </tr>
                             <tr class="table-group-divider">
+                                <th scope="col">Full Name</th>
+                                <td>{{ user[1] }}</td>
+                            </tr>
+                            <tr class="table-group-divider">
+                                <th scope="col">Mobile Number</th>
+                                <td>{{ user[2] }}</td>
+                            </tr>
+                            <tr class="table-group-divider">
                                 <th scope="col">Email Address</th>
                                 <td>{{ user[3] }}</td>
                             </tr>
@@ -87,12 +95,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="deposite text-center my-5 ">
-                        <form action="" method="post" >
-                            <input  class="bg-secondary p-2 rounded-2" type="number" name="deposite_money" id="deposite_money"> <br>
-                            <input class="btn btn-primary mt-2" type="submit" value="Deposite" id="button">  
-                        </form>
-                    </div>
                 </div>
             
         </div>
@@ -142,6 +144,7 @@
         </div>
     </div>
 </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

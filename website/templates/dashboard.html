@@ -25,6 +25,7 @@
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{user[1]}}
                       </a>
+                    
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/profile/{{user[0]}}">Profile</a></li>
                         <li><a class="dropdown-item" href="/update_password/{{user[0]}}">Change Password</a></li>
@@ -36,32 +37,26 @@
 
 
 <!-- main sign up form content area  -->
+<!-- <div class="mainbox profileclr">
+    <div class="card profile_menu" aria-hidden="true">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-5"></span>
+          </h5>
+          <p class="card-text placeholder-glow">
+            <span class="placeholder col-4"></span>
+          </p>
+          <p class="card-text placeholder-glow">
+            <span class="placeholder col-3"></span>
+          </p>
+        </div>
+      </div>
+</div> -->
+
 <div class="mainbox profileclr">
     <div class="container d-flex justify-content-between">
-        <!-- left area  -->
-        <div class="profile_menu my-4 card text-bg-light">
-            <div class="card-body">
-                <div class="upperpart text-center p-5">
-                    <i class="fas fa-user fa-lg"></i>
-                    <h5 class="fw-semibold orange">{{ user[4] }}</h5>
-                    <h6>{{ user[2] }}</h6>
-                    <a href="#" class="fw-semibold fs-6 btn orange btn-outline-secondary rounded-5">Edit Profile</a>
-                </div>
-            </div>
-            <div class="card-header"><h5 class="fw-semibold fs-4">Profile Menu</h5></div>
-            <div class="card-body d-block">
-                <a  class="fw-semibold link-underline link-underline-opacity-0 text-dark " href="/dashboard/{{user[0]}}"><i class="fas fa-home m-3"></i><span>Home</span></a>
-                <br>
-                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/update_password/{{user[0]}}"><i class="fas fa-lock m-3"></i><span>Change Password</span></a>
-                <br>
-                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="#"><i class="fas fa-ticket-alt m-3"></i><span>My Tickets</span></a>
-                <br>
-                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/deposite/{{user[0]}}"><i class="fas fa-money-check-alt m-3"></i><span>Deposite</span></a>
-                <br>
-                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/login"><i class="fas fa-sign-out-alt m-3"></i><span>Signout</span></a>
-            </div>
-        </div>
-        <!-- right area  -->
+        <!-- left area/location movie -->
         <div class="basicinfo my-4 card text-bg-light ">   
             <div class="card-header"><h3 class="fw-semibold display-6">Basic Information</h3></div>
                 <div class="card-body">
@@ -76,29 +71,46 @@
                                 <td>{{ user[4] }}</td>
                             </tr>
                             <tr class="table-group-divider">
+                                <th scope="col">Full Name</th>
+                                <td>{{ user[1] }}</td>
+                            </tr>
+                            <tr class="table-group-divider">
+                                <th scope="col">Mobile Number</th>
+                                <td>{{ user[2] }}</td>
+                            </tr>
+                            <tr class="table-group-divider">
                                 <th scope="col">Email Address</th>
                                 <td>{{ user[3] }}</td>
                             </tr>
                             <tr class="table-group-divider">
-                                <th scope="col">Current Amount</th>
+                                <th scope="col">CurrentAmount</th>
                                 <td>{{ user[6] }}</td>
                             </tr>
                             <tr class="table-group-divider">
                             </tr>
                         </tbody>
                     </table>
-                    <div class="deposite text-center my-5 ">
-                        <form action="" method="post" >
-                            <input  class="bg-secondary p-2 rounded-2" type="number" name="deposite_money" id="deposite_money"> <br>
-                            <input class="btn btn-primary mt-2" type="submit" value="Deposite" id="button">  
-                        </form>
-                    </div>
                 </div>
             
         </div>
+
+        <!-- right area/tickets summary  -->
+        <div class="card profile_menu my-4" aria-hidden="true">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title placeholder-glow">
+                <span class="placeholder col-5"></span>
+              </h5>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-4"></span>
+              </p>
+              <p class="card-text placeholder-glow">
+                <span class="placeholder col-3"></span>
+              </p>
+            </div>
+          </div>
     </div>
 </div>
-
 	
 <!-- Footer section -->
 <footer class="footer-distributed">
@@ -106,14 +118,20 @@
         <h3 class="orange"><span class="orange">TVA</span> <span>Cinemaplex</span></h3>
         <p class="footer-links">
             <a href="#" class="link-1">Home</a>
+            
             <a href="#">Blog</a>
+        
             <a href="#">Pricing</a>
+        
             <a href="#">About</a>
+            
             <a href="#">Faq</a>
+            
             <a href="#">Contact</a>
         </p>
         <p class="footer-company-name">TVA Cinemaplex © 2023</p>
     </div>
+
     <div class="footer-center">
         <div>
             <i class="fas fa-map-marker-alt"></i>
@@ -128,6 +146,7 @@
             <p><a href="mailto:support@company.com">support@tvacinemaplex.com</a></p>
         </div>
     </div>
+
     <div class="footer-right">
         <p class="footer-company-about">
             <span>About the company</span>
@@ -141,7 +160,9 @@
 
         </div>
     </div>
+
 </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
