@@ -34,26 +34,11 @@
         </nav>
     </header>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-    {% if messages %} 
-        {% for category, message in messages %} 
-            {% if category =='error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% else %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %} 
-        {% endfor %} {% endif %} {% endwith %}
 
 <!-- main sign up form content area  -->
 <div class="profileclr">
     <div class="container d-flex justify-content-between">
-        <!-- left area -->
+        <!-- left area  -->
         <div class="profile_menu my-4 card text-bg-light">
             <div class="card-body">
                 <div class="upperpart text-center p-5">
@@ -78,21 +63,34 @@
         </div>
         <!-- right area  -->
         <div class="basicinfo my-4 card text-bg-light ">   
-            <div class="card-header"><h3 class="fw-semibold display-6">Change Password</h3></div>
-                <div class="card-body">
-                    <form action="" method="POST" class=" d-grid gap-2">
-                        <label for="opassword" class="form-label">Old  Password</label>
-                        <input type="password" class="form-control"  name="opassword" id="opassword">
-                        
-                        <label for="npassword" class="form-label">New Password</label>
-                        <input type="password" class="form-control"  name="npassword" id="npassword">
-                        
-                        <label for="conpassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control"  name="conpassword" id="conpassword">
-                        
-                        <input class="btn btn-primary mt-2" type="submit" value="Update Now">                              
-                    </form>
-                </div>
+            <div class="card-header"><h3 class="fw-semibold display-6">Edit Information</h3></div>
+            <div class="card-body">
+                <table class="table table-hover  table-striped-columns">
+                    {%if condition%}
+                        <h3>Edit Done!</h3>
+                    {%else%}
+                        <form action="" method="post">
+                            <tbody >
+                                <tr class="table-group-divider">
+                                    <th scope="col">Username</th>
+                                    <td><input type="text" name="username" id="username" placeholder="{{ user[4] }}"></td>
+                                </tr>
+                                <tr class="table-group-divider">
+                                    <th scope="col">Mobile Number</th>
+                                    <td><input type="number" name="mobnum" id="mobnum" placeholder="{{ user[2] }}"></td>
+                                </tr>
+                                <tr class="table-group-divider">
+                                </tr>
+                                <tr class="table-group-divider">
+                                    <td colspan="2">
+                                        <input type="submit" class="btn btn-primary" value="Edit Now">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </form>
+                    {%endif%}
+                </table>
+            </div>   
         </div>
     </div>
 </div>

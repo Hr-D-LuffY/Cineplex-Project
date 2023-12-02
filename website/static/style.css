@@ -188,9 +188,15 @@ nav{
             width: 30%;
             height: 60vh;
         }
+        .movie_popup{
+            width: 35%;
+        }
         .basicinfo{
             width:55%;
             height: 60vh;
+        }
+        .trans{
+            width:55%;
         }
         .basicinfo p {
             margin-bottom:2px;
@@ -198,6 +204,9 @@ nav{
         .basicinfo td {
             color: orangered;
             font-weight: 600;
+        }
+        .moviebox{
+            height: 75vh;
         }
         
         /* If you don't want the footer to be responsive, remove these media queries */

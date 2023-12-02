@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TVA Cinemaplex | Dash Board</title>
+    <title>TVA Cinemaplex | Transaction</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -34,26 +34,11 @@
         </nav>
     </header>
 
-    {% with messages = get_flashed_messages(with_categories=true) %} 
-    {% if messages %} 
-        {% for category, message in messages %} 
-            {% if category =='error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% else %}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %} 
-        {% endfor %} {% endif %} {% endwith %}
 
 <!-- main sign up form content area  -->
 <div class="profileclr">
     <div class="container d-flex justify-content-between">
-        <!-- left area -->
+        <!-- left area  -->
         <div class="profile_menu my-4 card text-bg-light">
             <div class="card-body">
                 <div class="upperpart text-center p-5">
@@ -69,7 +54,7 @@
                 <br>
                 <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/update_password/{{user[0]}}"><i class="fas fa-lock m-3"></i><span>Change Password</span></a>
                 <br>
-                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/mytransaction/{{id}}"><i class="fas fa-ticket-alt m-3"></i><span>My Transaction</span></a>
+                <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="#"><i class="fas fa-ticket-alt m-3"></i><span>My Transaction</span></a>
                 <br>
                 <a class="fw-semibold link-underline link-underline-opacity-0 text-dark" href="/deposite/{{user[0]}}"><i class="fas fa-money-check-alt m-3"></i><span>Deposite</span></a>
                 <br>
@@ -77,22 +62,43 @@
             </div>
         </div>
         <!-- right area  -->
-        <div class="basicinfo my-4 card text-bg-light ">   
-            <div class="card-header"><h3 class="fw-semibold display-6">Change Password</h3></div>
+        <div class=" my-4 card text-bg-light " style="width: 65%;">   
+            <div class="card-header"><h3 class="fw-semibold display-6">My Transaction</h3></div>
                 <div class="card-body">
-                    <form action="" method="POST" class=" d-grid gap-2">
-                        <label for="opassword" class="form-label">Old  Password</label>
-                        <input type="password" class="form-control"  name="opassword" id="opassword">
-                        
-                        <label for="npassword" class="form-label">New Password</label>
-                        <input type="password" class="form-control"  name="npassword" id="npassword">
-                        
-                        <label for="conpassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control"  name="conpassword" id="conpassword">
-                        
-                        <input class="btn btn-primary mt-2" type="submit" value="Update Now">                              
-                    </form>
+                    <table class="table table-hover table-info table-striped">
+                        <thead class="table-warning">
+                          <tr>
+                            <th scope="col">Transaction Type</th>
+                            <th scope="col">Deposite Id</th>
+                            <th scope="col">Booking Id</th>
+                            <th scope="col">User Id</th>
+
+                            <th scope="col">Movie Place</th>
+                            <th scope="col">Movie Name</th>
+
+                            <th scope="col">Ticket Num</th>
+                            <th scope="col">Time</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {% for user_data in transaction %}
+                            <tr>
+                              <th >{{ user_data[0] }}</th>
+                              <td>{{ user_data[1] }}</td>
+                              <td>{{ user_data[2] }}</td>
+                              <td>{{ user_data[3] }}</td>
+
+                              <td>{{ user_data[7] }}-{{ user_data[8] }}</td>
+                              <td>{{ user_data[9] }}</td>
+
+                              <td>{{ user_data[4] }}</td>
+                              <td>{{ user_data[6] }}</td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
                 </div>
+            
         </div>
     </div>
 </div>

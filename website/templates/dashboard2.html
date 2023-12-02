@@ -8,7 +8,8 @@
     rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 <body>
     <header>
@@ -35,85 +36,101 @@
         </nav>
     </header>
 
-
-<!-- main sign up form content area  -->
-<!-- <div class="mainbox profileclr">
-    <div class="card profile_menu" aria-hidden="true">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title placeholder-glow">
-            <span class="placeholder col-5"></span>
-          </h5>
-          <p class="card-text placeholder-glow">
-            <span class="placeholder col-4"></span>
-          </p>
-          <p class="card-text placeholder-glow">
-            <span class="placeholder col-3"></span>
-          </p>
-        </div>
-      </div>
-</div> -->
-
 <div class=" profileclr">
     <div class="container d-flex justify-content-between">
         <!-- left area/location movie -->
         <div class="left">
-            <div class="dropdownsection my-4">
-                <form action="/dashboard/{{id}}" method="post">
-                  <label for="location" class="fw-semibold">Location </label><br>
-                  <select name="location" id="location">
-                    <option selected>Select the location</option>
-                    {%for location in locations%}
-                      <option value="{{location[0]}}">{{location[0]}}</option>
-                    {% endfor%}
-                  </select>
-                  <input class="btn btn-primary "  type="submit" value="Submit">
-                </form> 
-            </div>
+            <h5 class="fw-semibold mt-3">Running Movies in {{location}} Branch</h5>
             <br>
-            {%if loccon%}
-              <div>
-                  <h5 class="fw-semibold">Running Movies in {{selectedl}} Branch</h5>
-                  <br>
-                  <div class="moviees row ">
-                      {%for movie in movies%}
-                      <a class="link-underline link-underline-opacity-0 col-4 gap-1 mb-4" href="http://">
-                          <div class="card" style="width: 13rem;">
-                              <img src="{{movie[4]}}" class="card-img-top rounded " style="height: 17rem;" alt="...">
-                          </div>
-                      </a>
-                      {%endfor%}
-                  </div>
+            <div class="moviees row ">
+                {%for movie in movies%}
+                <a class="link-underline link-underline-opacity-0 col-6 gap-1 mb-4" href="http://">
+                    <div class="card" style="width: 13rem;">
+                        <img src="{{movie[4]}}" class="card-img-top rounded " style="height: 17rem;" alt="...">
+                    </div>
+                </a>
+                {%endfor%}
+            </div>
+            <h5 class="fw-semibold">Select Movie</h5><br>
 
-                  <h5 class="fw-semibold">Select Movie</h5><br>
-                  <a href="/dashboard/{{id}}/{{selectedl}}" class="btn btn-primary my-3">Select Movie</a>
-              </div>
-            {%else%}
+            <div class="form-floating mb-3">
+                <form action="" method="post">
+                    <select name="selectedmovie" id="selectedmovie">
+                        <option selected>Select Any Movie</option>
+                        {%for movie in movies%}
+                        <option value="{{movie[0]}}">{{movie[0]}}</option>
+                        {%endfor%}
+                    </select>
+                    <input class="btn btn-primary my-3" type="submit" value="Submit">
+                </form>
+            </div>
+            {%if moviecon%}
+                <h5 class="fw-semibold">Show Time of {{selectmovie}} in {{location}}</h5>
+                <br>
+                <div class="moviees row ">       
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Show Id</th>
+                                <th scope="col">Hall No</th>
+                                <th scope="col">Date Time</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {%for hallshow in hallshowinfo%}
+                                    <tr>
+                                        <td>{{hallshow[2]}}</td>
+                                        <td>{{hallshow[0]}}</td>
+                                        <td>{{hallshow[1]}}</td>
+                                    </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                </div>
+                <h5 class="fw-semibold">Select Show Time</h5><br>
+                <a href="/dashboard/{{id}}/{{location}}/{{selectmovie}}" class="btn btn-primary my-3">Select Show Time</a>
+            {%else%}  
 
             {%endif%}
-        </div>
-        
+   
+        </div>        
 
         <!-- right area/tickets summary  -->
         <div class="right movie_popup">
             <div class="card my-4" aria-hidden="true">
-                <img style="margin-left: 10px;margin-top: 10px; width: 7rem; height: 8rem;" src="https://img.freepik.com/free-photo/abstract-textured-backgound_1258-30454.jpg?w=826&t=st=1701380774~exp=1701381374~hmac=25a380b0545a52ac929d6c5db49938936aa91a6ca69070f5ac01bd874641df30" class="card-img-top" alt="...">
+                {%if movieinfo%}
+                    <img style="margin-left: 10px;margin-top: 10px; width: 7rem; height: 8rem;" src={{movieinfo[7]}} class="card-img-top" alt="...">
+                {% else %}
+                    <img style="margin-left: 10px;margin-top: 10px; width: 7rem; height: 8rem;" src="https://img.freepik.com/free-photo/abstract-textured-backgound_1258-30454.jpg?w=826&t=st=1701380774~exp=1701381374~hmac=25a380b0545a52ac929d6c5db49938936aa91a6ca69070f5ac01bd874641df30" class="card-img-top" alt="...">
+                {%endif%}
                 <div class="card-body">
                     <h5 class="card-title placeholder-glow">
-                        <span class="placeholder col-5"></span>
+                        {%if movieinfo%}
+                            {{movieinfo[1]}}
+                        {% else %}
+                            <span class="placeholder col-5"></span>
+                        {%endif%}
                     </h5>
                     <p class="card-text placeholder-glow">
-                        <span class="placeholder col-4"></span>
+                        {%if movieinfo%}
+                            Director: {{movieinfo[3]}}
+                        {% else %}
+                            <span class="placeholder col-4"></span>
+                        {%endif%}
                     </p>
                     <p class="card-text placeholder-glow">
-                        <span class="placeholder col-3"></span>
+                        {%if movieinfo%}
+                            Cast: {{movieinfo[4]}}
+                        {% else %}
+                            <span class="placeholder col-4"></span>
+                        {%endif%}
                     </p>
                     <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">Location</th>
                             <th></th>
-                            <td>{{selectedl}}</td>
+                            <td>{{location}}</td>
                           </tr>
                         </thead>
                         <tbody>
@@ -150,6 +167,7 @@
                         </tbody>
                       </table>
                 </div>
+                
             </div>
         </div>
         

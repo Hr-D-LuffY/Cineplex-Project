@@ -110,6 +110,7 @@ def check_userByID(id):
 
     return user
 
+#Function to update password
 def updatePassword(password,id):
     conn=create_connection()
     cursor=conn.cursor()
@@ -121,11 +122,36 @@ def updatePassword(password,id):
     cursor.close()
     conn.close()
 
+#Function to update profile
+def updateProfile(id,username, phn_num):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query = f"UPDATE users SET username='{username}', phn_num='{phn_num}' WHERE id={id};"
+    cursor.execute(query)
+    conn.commit()
+    print(query)
+
+    cursor.close()
+    conn.close()
+
 def depositemoney(id,money):
     conn=create_connection()
     cursor=conn.cursor()
 
     query = f"UPDATE users SET amount=amount+{money} WHERE id={id};"
+    cursor.execute(query)
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+#Function to cut money
+def cutmoney(id,money):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query = f"UPDATE users SET amount=amount-{money} WHERE id={id};"
     cursor.execute(query)
     conn.commit()
 
@@ -247,6 +273,15 @@ def add_movie_info(movie_name, release_date, director, cast, genre, language, po
     cursor.close()
     conn.close()
 
+def show_movie_info(movie_name):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="SELECT * FROM movie_info where movie_name=%s;"
+    cursor.execute(query,(movie_name,))
+    return cursor.fetchone()
+
+
 add_movie_info("The Shawshank Redemption", "1994-09-14", "Frank Darabont", "Tim Robbins, Morgan Freeman, Bob Gunton", "Drama", "English", "https://images.app.goo.gl/owqtUzsHMpxDPrqS7")
 add_movie_info("The Godfather", "1972-03-24", "Francis Ford Coppola", "Marlon Brando, Al Pacino, James Caan", "Crime, Drama", "English", "https://images.app.goo.gl/MKorXCamAT8VaUhq7")
 add_movie_info("The Dark Knight", "2008-07-16", "Christopher Nolan", "Christian Bale, Michael Caine, Heath Ledger", "Action, Crime, Drama", "English", "https://images.app.goo.gl/f9zWtpsQWVj2tCcn9")
@@ -298,6 +333,14 @@ def hall_info(branch_name,hall_num, seat_capacity, type):
 
     cursor.close()
     conn.close()
+
+def chck_hall_type(branch_name,hall_num):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query_check = 'SELECT type FROM hall WHERE branch_name = %s and hall_num=%s'
+    cursor.execute(query_check, (branch_name,hall_num))
+    return cursor.fetchone()
 
 hall_info('Mirpur',1,115,'VIP')
 hall_info('Mirpur',2,350,'Regular')
@@ -376,7 +419,6 @@ def add_running_show(branch_name, hall_num, movie_name, show_time):
     cursor.close()
     conn.close()
 
-
 #Function to delete any movie from the table
 def rem_running_show(show_ID):
     conn = create_connection()
@@ -409,6 +451,40 @@ def running_showOrderByBranch():
     # cursor.close()
     # conn.close()
 
+def running_showBranch():
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT distinct branch_name FROM running_show ;'
+    cursor.execute(query)
+
+    return cursor.fetchall()
+
+def running_movie_in_hall(branch_name):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="""SELECT m.movie_name,branch_name,director,cast,poster_image,show_time FROM running_show rs
+    left join movie_info m on rs.movie_name=m.movie_name
+    where branch_name=%s;"""
+    cursor.execute(query,(branch_name,))
+    return cursor.fetchall()
+
+def hall_time(branch_name,movie_name):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="SELECT hall_num,show_time,show_ID FROM running_show where movie_name = %s and branch_name=%s ;"
+    cursor.execute(query,(movie_name,branch_name))
+    return cursor.fetchall()
+
+def getshowtime(show_ID):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="SELECT show_time FROM running_show where show_ID=%s;"
+    cursor.execute(query,(show_ID,))
+    return cursor.fetchone()
 
 
 add_running_show("Basundhara", 1, "The Shawshank Redemption", "2023-12-08 19:00:00")
@@ -440,7 +516,7 @@ if not table_exists(table_name):
     booking_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
     showtime_id INT NOT NULL,
-    seat_row INT NOT NULL,
+    seat_row VARCHAR(1) NOT NULL,
     seat_number INT NOT NULL,
     booking_time DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
@@ -463,10 +539,9 @@ def is_seat_available(showtime_id, seat_row, seat_number):
     SELECT * FROM booked_seats WHERE showtime_id = %s AND seat_row = %s AND seat_number = %s
     """
     values = (showtime_id, seat_row, seat_number)
-
+    
     cursor.execute(query, values)
     result = cursor.fetchone()
-
     cursor.close()
     conn.close()
 
@@ -493,7 +568,16 @@ def book_seat(user_id, showtime_id, seat_row, seat_number):
         print("NOT")
     cursor.close()
     conn.close()
-# book_seat(1,1,1,12)
+
+#Function to retrive bookId
+def getbookId(user_id, showtime_id, seat_row, seat_number):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="SELECT booking_id FROM booked_seats where user_id=%s and showtime_id=%s and seat_row=%s and seat_number=%s;"
+    cursor.execute(query,(user_id, showtime_id, seat_row, seat_number))
+    return cursor.fetchone()
+
 #Booked_seats Table Done
 ############################################################################
 
@@ -531,6 +615,14 @@ def add_deposite(userId,amount):
     cursor.close()
     conn.close()
     
+#Function to get booking id
+def getdepoID(id):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="SELECT Depo_ID FROM deposite where UID=%s order by Depo_ID desc limit 1;"
+    cursor.execute(query,(id,))
+    return cursor.fetchone()
 # add_deposite(1,1000)
 #depostie Table Done
 ############################################################################
@@ -562,14 +654,30 @@ if not table_exists(table_name):
 cursor.close()
 conn.close()
 
+def is_trn_already(Book_id,userId,ticket_num):
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    query = """
+    SELECT * FROM transaction WHERE Book_id = %s AND userId = %s AND ticket_num = %s
+    """
+    
+    cursor.execute(query, (Book_id, userId, ticket_num))
+    result = cursor.fetchone()  
+    return result
+
 #Function to add transaction
 def add_transactiondBYBooking(Book_id,userId,ticket_num):
     conn=create_connection()
     cursor=conn.cursor()
-
-    query="INSERT INTO transaction (Book_id,userId,type,ticket_num) VALUES (%s, %s, %s,%s)"
-    cursor.execute(query,(Book_id,userId,'Purchase Ticket',ticket_num))
-    conn.commit()
+    
+    result=is_trn_already(Book_id,userId,ticket_num)
+    if result:
+        print("NOT")
+    else:
+        query="INSERT INTO transaction (Book_id,userId,type,ticket_num) VALUES (%s, %s, %s,%s)"
+        cursor.execute(query,(Book_id,userId,'Purchase Ticket',ticket_num))
+        conn.commit()
 
     cursor.close()
     conn.close()
@@ -584,6 +692,20 @@ def add_transactiondBYDeposite(Depo_id,userId):
 
     cursor.close()
     conn.close()
+
+def gettransaction(userId):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query="""SELECT type, Depo_id, Book_id, userId, ticket_num, showtime_id,Time,branch_name,hall_num,movie_name
+        FROM
+            (SELECT type, Depo_id, Book_id, userId, ticket_num, showtime_id,Time
+            FROM transaction AS t
+            LEFT JOIN booked_seats AS bs ON t.Book_id = bs.booking_id
+            WHERE t.userId = %s) AS temp
+        LEFT JOIN running_show AS rs ON temp.showtime_id = rs.show_ID;"""
+    cursor.execute(query,(userId,))
+    return cursor.fetchall()
 
 # add_transactiondBYBooking(3,1,'1/1')
 # add_transactiondBYDeposite(3,1)
