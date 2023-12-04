@@ -35,26 +35,7 @@
         </nav>
     </header>
 
-
-<!-- main sign up form content area  -->
-<!-- <div class="mainbox profileclr">
-    <div class="card profile_menu" aria-hidden="true">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title placeholder-glow">
-            <span class="placeholder col-5"></span>
-          </h5>
-          <p class="card-text placeholder-glow">
-            <span class="placeholder col-4"></span>
-          </p>
-          <p class="card-text placeholder-glow">
-            <span class="placeholder col-3"></span>
-          </p>
-        </div>
-      </div>
-</div> -->
-
-<div class=" profileclr">
+<div class=" profileclr ">
     <div class="container d-flex justify-content-between">
         <!-- left area/location movie -->
         <div class="left">
@@ -77,11 +58,9 @@
                   <br>
                   <div class="moviees row ">
                       {%for movie in movies%}
-                      <a class="link-underline link-underline-opacity-0 col-4 gap-1 mb-4" href="http://">
-                          <div class="card" style="width: 13rem;">
-                              <img src="{{movie[4]}}" class="card-img-top rounded " style="height: 17rem;" alt="...">
-                          </div>
-                      </a>
+                        <div class="card col-4 gap-1 mb-4 mx-3 p-0" style="width: 13rem;">
+                          <img src="{{movie[4]}}" class="card-img-top rounded " style="height: 17rem; width: 13rem;" alt="...">
+                        </div>
                       {%endfor%}
                   </div>
 

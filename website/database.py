@@ -282,13 +282,13 @@ def show_movie_info(movie_name):
     return cursor.fetchone()
 
 
-add_movie_info("The Shawshank Redemption", "1994-09-14", "Frank Darabont", "Tim Robbins, Morgan Freeman, Bob Gunton", "Drama", "English", "https://images.app.goo.gl/owqtUzsHMpxDPrqS7")
-add_movie_info("The Godfather", "1972-03-24", "Francis Ford Coppola", "Marlon Brando, Al Pacino, James Caan", "Crime, Drama", "English", "https://images.app.goo.gl/MKorXCamAT8VaUhq7")
-add_movie_info("The Dark Knight", "2008-07-16", "Christopher Nolan", "Christian Bale, Michael Caine, Heath Ledger", "Action, Crime, Drama", "English", "https://images.app.goo.gl/f9zWtpsQWVj2tCcn9")
-add_movie_info("Surongo", "2023-06-29", "Raihan Rafi", "Afran Nisho, Toma Mirza ,Shahiduzzaman Selim", "Adventure, Drama, Fantasy", "Bangla", "https://images.app.goo.gl/keTMUnnALuycXQtr5")
-add_movie_info("Pulp Fiction", "1994-09-14", "Quentin Tarantino", "John Travolta, Samuel L. Jackson, Uma Thurman", "Crime, Drama", "English", "https://images.app.goo.gl/xQkaZuyMpXsevFrJ7")
-add_movie_info('Oppenheimer', '2023-07-21', 'Christopher Nolan', 'Cillian Murphy, Emily Blunt, Matt Damon', 'Drama, History', 'English', 'https://images.app.goo.gl/Bu6evHReDTEQnrVd8')
-add_movie_info('Jawan', '2023-06-02', 'Atlee', 'Shah Rukh Khan, Nayanthara, Vijay Sethupathi', 'Action, Thriller', 'Hindi, Tamil', 'https://images.app.goo.gl/kH5M1ugBnXWYNp3t5')
+add_movie_info("The Shawshank Redemption", "1994-09-14", "Frank Darabont", "Tim Robbins, Morgan Freeman, Bob Gunton", "Drama", "English", "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg")
+add_movie_info("The Godfather", "1972-03-24", "Francis Ford Coppola", "Marlon Brando, Al Pacino, James Caan", "Crime, Drama", "English", "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg")
+add_movie_info("The Dark Knight", "2008-07-16", "Christopher Nolan", "Christian Bale, Michael Caine, Heath Ledger", "Action, Crime, Drama", "English", "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg")
+add_movie_info("Surongo", "2023-06-29", "Raihan Rafi", "Afran Nisho, Toma Mirza ,Shahiduzzaman Selim", "Adventure, Drama, Fantasy", "Bangla", "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Surongo.jpeg/220px-Surongo.jpeg")
+add_movie_info("Pulp Fiction", "1994-09-14", "Quentin Tarantino", "John Travolta, Samuel L. Jackson, Uma Thurman", "Crime, Drama", "English", "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg")
+add_movie_info('Oppenheimer', '2023-07-21', 'Christopher Nolan', 'Cillian Murphy, Emily Blunt, Matt Damon', 'Drama, History', 'English', 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Oppenheimer_%28film%29.jpg/220px-Oppenheimer_%28film%29.jpg')
+add_movie_info('Jawan', '2023-06-02', 'Atlee', 'Shah Rukh Khan, Nayanthara, Vijay Sethupathi', 'Action, Thriller', 'Hindi, Tamil', 'https://upload.wikimedia.org/wikipedia/en/3/39/Jawan_film_poster.jpg')
 
 
 #Movie_info Table Done

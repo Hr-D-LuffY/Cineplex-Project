@@ -17,7 +17,7 @@ nav{
     color: white;
 }
 .mainbox{
-    height: 70vh;
+    height: 80vh;
     background-color: whitesmoke;
     list-style: none;
     font-size: larger;
@@ -186,14 +186,14 @@ nav{
         }
         .profile_menu{
             width: 30%;
-            height: 60vh;
+            height: 70vh;
         }
         .movie_popup{
             width: 35%;
         }
         .basicinfo{
             width:55%;
-            height: 60vh;
+            height: 70vh;
         }
         .trans{
             width:55%;
@@ -208,10 +208,13 @@ nav{
         .moviebox{
             height: 75vh;
         }
+        .profilebox{
+            height: 80vh;
+        }
         
         /* If you don't want the footer to be responsive, remove these media queries */
 
-        @media (max-width: 880px) {
+        @media (max-width: 1030px) {
 
             .footer-distributed{
                 font: bold 14px sans-serif;
@@ -231,6 +234,12 @@ nav{
             }
             .mainbox{
                 height: 100vh;
+            }
+            .mainbox h5{
+                font-size:x-large;
+            }
+            .mainbox h6{
+                font-size:large;
             }
             .acard{
                 height: 250px ;
