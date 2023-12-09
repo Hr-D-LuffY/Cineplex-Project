@@ -14,7 +14,7 @@
 <body>
     <header>
         <!-- main project navber  -->
-        <nav class="bg-dark">
+        <nav class="">
             <div class="container row m-auto d-flex  align-items-center">
                 <div class="logo_container col-md-6 col-6 col-sm-6">
                     <a href="/" class="link-underline link-underline-opacity-0">
@@ -39,13 +39,22 @@
 <div class=" profileclr ">
     <div class="container d-flex justify-content-center">
         {%if conditon%}
-        <div class="d-flex flex-column align-items-center justify-content-center" style="height: 60vh;">
-            <div class="text-center">
-                <h2 class="fw-bold mb-4 display-2">Purchase Done</h2>
-                <a href="/dashboard/{{id}}" class="btn btn-primary">Return To Dashboard</a>
-            </div>
-        </div>
-            
+            {%if moneycon%}
+                <div class="d-flex flex-column align-items-center justify-content-center" style="height: 60vh;">
+                    <div class="text-center">
+                        <h2 class="fw-bold mb-4 display-2 text-white">Purchase Done</h2>
+                        <a href="/dashboard/{{id}}" class="btn btn-primary">Return To Dashboard</a>
+                    </div>
+                </div>
+            {%else%}
+                <div class="d-flex flex-column align-items-center justify-content-center" style="height: 60vh;">
+                    <div class="text-center">
+                        <h2 class="fw-bold mb-4 display-2 text-white">Purchase Failed</h2>
+                        <h4 class="fw-bold mb-4 display-2 text-white">You Don't Have Enough Money on your account!</h4>
+                        <a href="/deposite/{{id}}" class="btn btn-primary">Return To Deposite</a>
+                    </div>
+                </div>
+            {%endif%}
         {%else%}
             <!-- tickets summary  -->
             <div class="right movie_popup">
@@ -116,7 +125,10 @@
         {%endif%}
     </div>
 </div>
-	
+
+<div class="background-image">
+    <img src="https://www.artofvfx.com/wp-content/uploads/2021/08/Loki_ILM_ITW_05.jpg" alt="Background Image">
+  </div>
 <!-- Footer section -->
 <footer class="footer-distributed">
     <div class="footer-left">
@@ -167,7 +179,23 @@
     </div>
 
 </footer>
+<style>
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; 
+    }
 
+    .background-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

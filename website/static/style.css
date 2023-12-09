@@ -8,21 +8,67 @@ nav{
     
 }
 .loginbox{
-    height: 65vh;
-}
+    height: 75vh;
+    }
+
 .acard{
     height: 225px;
     margin-bottom: 15px;
     background-color: #6C757D;
     color: white;
 }
+/* .card-body {
+    height: 400px;
+    width: 500px;
+    max-height: 300px;
+    max-width: 200px;
+  } */
+  /* .card-body {
+    width: 400px;
+  }
+  .card-header {
+    width: 400px;
+  }
+  .card-footer {
+    width: 400px;
+  }
+  /* /* .card-body-cut {
+    height: 0px;
+    width: 400px;
+    border: 0px;
+    overflow: hidden; */ 
+  /* }  */
+  .card-body {
+    background-color: #1B98E033 ;
+  }
+  .card-header{
+    background-color: #1B98E033 ;
+  }
+
 .mainbox{
     height: 80vh;
-    background-color: whitesmoke;
     list-style: none;
     font-size: larger;
 }
-
+.purple{
+    background-color:#5F1A89;
+    
+}
+.blue{
+    background-color: #0d6efd;
+}
+.dark{
+    background-color: #555555;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+.transparent{
+    background-color: #F4FAFC;
+}
 .footer-distributed{
     background: #666;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -30,7 +76,7 @@ nav{
     width: 100%;
     text-align: left;
     font: bold 16px sans-serif;
-    padding: 50px 50px;
+    padding: 20px 50px;
 }
 
         .footer-distributed .footer-left,
@@ -179,10 +225,6 @@ nav{
         }
         .orange{
             color: orangered;
-        }
-        .profileclr{
-            /* background-color:#F8EFF4; */
-            background-color: rgb(210, 230, 233);
         }
         .profile_menu{
             width: 30%;

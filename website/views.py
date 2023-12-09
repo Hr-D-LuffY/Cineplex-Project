@@ -201,6 +201,7 @@ def dashboard3(id,location,movie):
 @views.route('/purchase/<id>/<location>/<movie>/<showid>/<hallno>/<showdate>/<showtime>/<seat>', methods=["GET", "POST"])
 def purchase(id,location,movie,showid,hallno,showdate,showtime,seat):
     user = check_userByID(id)
+    print(user[-1])
     hallshowinfo=hall_time(location,movie)
     movieinfo=show_movie_info(movie)
     halltype=chck_hall_type(location,hallno)
@@ -217,12 +218,15 @@ def purchase(id,location,movie,showid,hallno,showdate,showtime,seat):
         seatrow=seat[0]
         seatcol=int(seat[2:])
         ticket_num=f"{seatrow}-{seatcol}"
-        book_seat(id,showid,seatrow,seatcol)
-        booking_id=getbookId(id,showid,seatrow,seatcol)
-        booking_id=int(booking_id[0])
-        add_transactiondBYBooking(booking_id,id,ticket_num)
-        cutmoney(id,amount)
-        return render_template("purchase.html",conditon=conditon,hallno=hallno ,halltype=halltype,seat=seat,showtime=showtime,showdate=showdate,amount=amount,movieinfo=movieinfo, user=user, location=location, id=id,hallshowinfo=hallshowinfo)
+        if user[-1]>amount:   
+            book_seat(id,showid,seatrow,seatcol)
+            booking_id=getbookId(id,showid,seatrow,seatcol)
+            booking_id=int(booking_id[0])
+            add_transactiondBYBooking(booking_id,id,ticket_num)
+            cutmoney(id,amount)
+            return render_template("purchase.html",moneycon=True,conditon=conditon,hallno=hallno ,halltype=halltype,seat=seat,showtime=showtime,showdate=showdate,amount=amount,movieinfo=movieinfo, user=user, location=location, id=id,hallshowinfo=hallshowinfo)
+        else:
+            return render_template("purchase.html",moneycon=False,conditon=conditon,hallno=hallno ,halltype=halltype,seat=seat,showtime=showtime,showdate=showdate,amount=amount,movieinfo=movieinfo, user=user, location=location, id=id,hallshowinfo=hallshowinfo)
     return render_template("purchase.html",hallno=hallno ,halltype=halltype,seat=seat,showtime=showtime,showdate=showdate,amount=amount,movieinfo=movieinfo, user=user, location=location, id=id,hallshowinfo=hallshowinfo)
 
 @views.route('/profile/<id>',methods=["GET","POST"])

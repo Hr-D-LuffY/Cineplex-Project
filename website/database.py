@@ -289,6 +289,7 @@ add_movie_info("Surongo", "2023-06-29", "Raihan Rafi", "Afran Nisho, Toma Mirza 
 add_movie_info("Pulp Fiction", "1994-09-14", "Quentin Tarantino", "John Travolta, Samuel L. Jackson, Uma Thurman", "Crime, Drama", "English", "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg")
 add_movie_info('Oppenheimer', '2023-07-21', 'Christopher Nolan', 'Cillian Murphy, Emily Blunt, Matt Damon', 'Drama, History', 'English', 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Oppenheimer_%28film%29.jpg/220px-Oppenheimer_%28film%29.jpg')
 add_movie_info('Jawan', '2023-06-02', 'Atlee', 'Shah Rukh Khan, Nayanthara, Vijay Sethupathi', 'Action, Thriller', 'Hindi, Tamil', 'https://upload.wikimedia.org/wikipedia/en/3/39/Jawan_film_poster.jpg')
+add_movie_info('Animal', '2023-12-01', 'Sandeep Reddy Vanga', 'Ranbir Kapoor, Anil Kapoor, Bobby Deol , Rashmika Mandana', 'Action, Crime, Drama', 'Hindi, Tamil', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/90/Animal_%282023_film%29_poster.jpg/220px-Animal_%282023_film%29_poster.jpg')
 
 
 #Movie_info Table Done
@@ -489,16 +490,23 @@ def getshowtime(show_ID):
 
 add_running_show("Basundhara", 1, "The Shawshank Redemption", "2023-12-08 19:00:00")
 add_running_show("Basundhara", 2, "The Godfather", "2023-11-28 17:00:00")
+add_running_show("Basundhara", 2, "Animal", "2023-12-12 17:00:00")
 add_running_show("Mirpur", 1, "Surongo", "2023-11-29 17:00:00")
 add_running_show("Mirpur", 2, "Pulp Fiction", "2023-11-29 14:30:00")
 add_running_show("Mirpur", 3, "Oppenheimer", "2023-11-30 19:00:00")
+add_running_show("Mirpur", 2, "Animal", "2023-12-12 17:00:00")
+add_running_show("Mirpur", 3, "Animal", "2023-12-12 13:00:00")
 add_running_show("Mohakhali", 1, "Jawan", "2023-12-01 17:00:00")
 add_running_show("Mohakhali", 2, "The Dark Knight", "2023-12-10 17:00:00")
+add_running_show("Mohakhali", 2, "Animal", "2023-12-12 17:00:00")
 add_running_show("Savar", 1, "Pulp Fiction", "2023-12-15 15:00:00")
 add_running_show("Savar", 2, "Jawan", "2023-12-08 17:00:00")
+add_running_show("Mirpur", 2, "Animal", "2023-12-12 13:00:00")
 add_running_show("Uttora", 1, "Surongo", "2023-12-08 19:00:00")
 add_running_show("Uttora", 2, "Godfather", "2023-12-08 15:00:00")
 add_running_show("Uttora", 3, "Jawan", "2023-12-14 14:30:00")
+add_running_show("Uttora", 3, "Animal", "2023-12-12 13:00:00")
+add_running_show("Uttora", 2, "Animal", "2023-12-12 17:00:00")
 
 
 #Running_show Table Done

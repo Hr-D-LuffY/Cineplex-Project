@@ -14,7 +14,7 @@
 <body>
     <header>
         <!-- main project navber  -->
-        <nav class="bg-dark">
+        <nav class="">
             <div class="container row m-auto d-flex  align-items-center">
                 <div class="logo_container col-md-6 col-6 col-sm-6">
                     <a href="/" class="link-underline link-underline-opacity-0">
@@ -40,7 +40,7 @@
     <div class="container d-flex justify-content-between">
         <!-- left area/location movie -->
         <div class="left">
-            <h5 class="fw-semibold mt-3">Running Movies in {{location}} Branch</h5>
+            <h5 class="fw-semibold mt-3 text-white">Running Movies in {{location}} Branch</h5>
             <br>
             <div class="moviees row ">
                 {%for movie in movies%}
@@ -51,7 +51,7 @@
                 </a>
                 {%endfor%}
             </div>
-            <h5 class="fw-semibold">Select Movie</h5><br>
+            <h5 class="fw-semibold text-white">Select Movie</h5><br>
 
             <div class="form-floating mb-3">
                 <form action="" method="post">
@@ -65,7 +65,7 @@
                 </form>
             </div>
             {%if moviecon%}
-                <h5 class="fw-semibold">Show Time of {{selectmovie}} in {{location}}</h5>
+                <h5 class="fw-semibold text-white text-white">Show Time of {{selectmovie}} in {{location}}</h5>
                 <br>
                 <div class="moviees row ">       
                         <table class="table">
@@ -87,8 +87,8 @@
                             </tbody>
                         </table>
                 </div>
-                <h5 class="fw-semibold">Select Show Time</h5><br>
-                <a href="/dashboard/{{id}}/{{location}}/{{selectmovie}}" class="btn btn-primary my-3">Select Show Time</a>
+                <h5 class="fw-semibold text-white">Select Show Time</h5><br>
+                <a href="/dashboard/{{id}}/{{location}}/{{selectmovie}}" class="btn btn-primary my-3 text-white">Select Show Time</a>
             {%else%}  
 
             {%endif%}
@@ -174,6 +174,9 @@
     </div>
 </div>
 	
+<div class="background-image">
+    <img src="https://www.ukscreenalliance.co.uk/wp-content/uploads/2019/08/avengers-infinity-war-deep-space-cinesite-vfx.jpg" alt="Background Image">
+  </div>
 <!-- Footer section -->
 <footer class="footer-distributed">
     <div class="footer-left">
@@ -225,7 +228,23 @@
 
 </footer>
 
+<style>
+    .background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Place the image behind other content */
+}
 
+.background-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script></body>

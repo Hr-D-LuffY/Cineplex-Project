@@ -13,7 +13,7 @@
 <body>
     <header>
         <!-- main project navber  -->
-        <nav class="bg-dark">
+        <nav class="">
             <div class="container row m-auto d-flex  align-items-center">
                 <div class="logo_container col-md-6 col-6 col-sm-6">
                     <a href="/" class="link-underline link-underline-opacity-0">
@@ -34,37 +34,37 @@
 
 
 <!-- main sign up form content area  -->
-<div class="mainbox">
-    <h1 class="text-center display-3 fw-bolder p-3"><u>WELCOME <span class="orange text-uppercase"> {{user[3] }}</span></u></h1>
+<div class="mainbox" >
+    <h1 class="text-center display-3 fw-bolder p-3 text-white">WELCOME <span class="orange text-uppercase"> {{user[3] }}</span></h1>
     <div class="w-75 m-auto d-flex text-center gap-3 mt-3 ">
         <div class="addmovieinfo  w-25">
-            <div class="card acard  p-5">
-                <div class="card-body">
-                  <h6 class="fw-bolder display-6 card-title mb-3">Add Movie Info</h6>
+            <div class="">
+                <div class="">
+                  <h6 class="fw-bolder display-6 card-title mb-3 text-white ">Add Movie Info </h6>
                   <a href="/addMovieInfo/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="addhallInfo  w-25">
-            <div class="card acard p-5">
-                <div class="card-body">
-                  <h6 class="fw-bolder display-6 card-title mb-3">Add New Hall Info</h6>
+            <div class="">
+                <div class="">
+                  <h6 class="fw-bolder display-6 card-title mb-3 text-white">Add New Hall Info</h6>
                   <a href="/addHallInfo/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="addrunningshow  w-25">
-            <div class="card acard p-5">
-                <div class="card-body">
-                  <h6 class="fw-bolder display-6  card-title mb-3">Add Running Show</h6>
+            <div class="">
+                <div class="">
+                  <h6 class="fw-bolder display-6  card-title mb-3 text-white">Add Running Show</h6>
                   <a href="/addrunningShow/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="remrunningshow  w-25">
-            <div class="card acard  p-4">
-                <div class="card-body">
-                  <h6 class="fw-bolder display-6  card-title mb-3">Remove Running Show</h6>
+            <div class="">
+                <div class="">
+                  <h6 class="fw-bolder display-6  card-title mb-3 text-white">Remove Running Show</h6>
                   <a href="/runningShowList/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
@@ -72,33 +72,33 @@
     </div>
     <div class="w-75 m-auto d-flex text-center gap-3 mt-3 ">
         <div class="userlist  w-25 ">
-            <div class="card acard p-4">
-                <div class="card-body">
-                  <h5 class="fw-bolder display-6 card-title mb-5">All Users List</h5>
+            <div class="">
+                <div class="">
+                  <h5 class="fw-bolder display-6 card-title mb-5 text-white">All Users List</h5>
                   <a href="/userlist/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="deposite  w-25">
-            <div class="card acard p-4">
-                <div class="card-body">
-                  <h5 class="fw-bolder display-6 card-title mb-5">Deposite Box</h5>
+            <div class="">
+                <div class="">
+                  <h6 class="fw-bolder display-6 card-title mb-5 text-white">Deposite Box</h6>
                   <a href="/deposite_box/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="transaction  w-25">
-            <div class="card acard  p-4">
-                <div class="card-body">
-                  <h5 class="fw-bolder display-6 card-title mb-5">Transaction</h5>
+            <div class="">
+                <div class="">
+                  <h5 class="fw-bolder display-6 card-title mb-5 text-white">Transaction</h5>
                   <a href="/transaction/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
         </div>  
         <div class="booked_seat  w-25">
-            <div class="card acard p-4">
-                <div class="card-body">
-                  <h5 class="fw-bolder display-6 card-title mb-5">Booked seat</h5>
+            <div class="">
+                <div class="">
+                  <h5 class="fw-bolder display-6 card-title mb-5 text-white">Booked seat</h5>
                   <a href="/booked_seat/{{user[0]}}" class="btn btn-primary">Let's GO</a>
                 </div>
             </div>
@@ -106,6 +106,9 @@
     </div>   
 </div>
 
+<div class="background-image">
+    <img src="https://helios-i.mashable.com/imagery/articles/02o2q8vMKziNk1ruJudMqgi/hero-image.fill.size_1200x900.v1626450364.jpg" alt="Background Image">
+  </div>
 <!-- Footer section -->
 <footer class="footer-distributed">
     <div class="footer-left">
@@ -156,8 +159,23 @@
     </div>
 
 </footer>
+<style>
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; 
+    }
 
-
+    .background-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

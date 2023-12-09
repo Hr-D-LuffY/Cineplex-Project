@@ -13,12 +13,13 @@
 <body>
     <header>
         <!-- main project navber  -->
-        <nav class="bg-dark">
+        <nav class="">
             <div class="container row m-auto d-flex  align-items-center">
                 <div class="logo_container col-md-6 col-6 col-sm-6">
                     <a href="/" class="link-underline link-underline-opacity-0">
                         <h1 class="orange">TVA</h1>
                         <h1 class="text-white">CINEMAPLEX</h1>
+                        <h3 class= "text-white">Where movie comes alive!</h3>
                     </a>
                 </div>
                 <div class="menus_container dropdown  col-md-6 col-6 col-sm-6 d-md-flex justify-content-md-end">
@@ -41,7 +42,7 @@
         <div class="left">
             <div class="dropdownsection my-4">
                 <form action="/dashboard/{{id}}" method="post">
-                  <label for="location" class="fw-semibold">Location </label><br>
+                  <label for="location" class="fw-semibold text-white">Location </label><br>
                   <select name="location" id="location">
                     <option selected>Select the location</option>
                     {%for location in locations%}
@@ -54,17 +55,17 @@
             <br>
             {%if loccon%}
               <div>
-                  <h5 class="fw-semibold">Running Movies in {{selectedl}} Branch</h5>
+                  <h5 class="fw-semibold text-white">Running Movies in {{selectedl}} Branch </h5>
                   <br>
                   <div class="moviees row ">
                       {%for movie in movies%}
-                        <div class="card col-4 gap-1 mb-4 mx-3 p-0" style="width: 13rem;">
+                        <div class="card col-4 gap-1 mb-4 mx-3 p-0 " style="width: 13rem;">
                           <img src="{{movie[4]}}" class="card-img-top rounded " style="height: 17rem; width: 13rem;" alt="...">
                         </div>
                       {%endfor%}
                   </div>
 
-                  <h5 class="fw-semibold">Select Movie</h5><br>
+                  <h5 class="fw-semibold text-white">Select Movie</h5><br>
                   <a href="/dashboard/{{id}}/{{selectedl}}" class="btn btn-primary my-3">Select Movie</a>
               </div>
             {%else%}
@@ -186,7 +187,13 @@
 
 </footer>
 
+<style>
+  body 
+  {
+    background-image: url("https://img.freepik.com/premium-photo/tunnel-with-red-lights-red-led-light_910135-11536.jpg?w=826");
 
+}
+</style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script></body>
