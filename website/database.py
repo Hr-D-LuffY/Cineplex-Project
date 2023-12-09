@@ -631,7 +631,25 @@ def getdepoID(id):
     query="SELECT Depo_ID FROM deposite where UID=%s order by Depo_ID desc limit 1;"
     cursor.execute(query,(id,))
     return cursor.fetchone()
-# add_deposite(1,1000)
+
+#Function to see all deposite
+def alldeposite():
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT * FROM deposite'
+    cursor.execute(query)
+    return cursor.fetchall()
+
+#Function to see one user deposite
+def oneuserdeposite(id):
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT * FROM deposite where UID=%s;'
+    cursor.execute(query,(id,))
+    return cursor.fetchall()
+
 #depostie Table Done
 ############################################################################
 
@@ -673,6 +691,24 @@ def is_trn_already(Book_id,userId,ticket_num):
     cursor.execute(query, (Book_id, userId, ticket_num))
     result = cursor.fetchone()  
     return result
+
+#Function to see all transaction:
+def alltransaction():
+    conn=create_connection()
+    cursor=conn.cursor()
+
+    query='SELECT * FROM transaction'
+    cursor.execute(query)
+    return cursor.fetchall()
+
+#Function to see one user transaction:
+def oneusertransaction(id):
+    conn=create_connection()
+    cursor=conn.cursor()
+    
+    query='SELECT * FROM cineplex.transaction where userId=%s;'
+    cursor.execute(query,(id,))
+    return cursor.fetchall()
 
 #Function to add transaction
 def add_transactiondBYBooking(Book_id,userId,ticket_num):

@@ -69,20 +69,20 @@ def userlist(id):
 
 @views.route('/deposite_box/<id>', methods=["GET","POST"])
 def deposite_box(id):
-    conn=create_connection()
-    cursor=conn.cursor()
-    query='SELECT * FROM deposite'
-    cursor.execute(query)
-    deposite=cursor.fetchall()
+    deposite=alldeposite()
+    if request.method=="POST":
+        userid=request.form.get("search")
+        deposite=oneuserdeposite(userid)
+        return render_template('deposite_box.html',user=deposite,id=id)
     return render_template('deposite_box.html',user=deposite,id=id)
 
 @views.route('/transaction/<id>', methods=["GET","POST"])
 def transaction(id):
-    conn=create_connection()
-    cursor=conn.cursor()
-    query='SELECT * FROM transaction'
-    cursor.execute(query)
-    transaction=cursor.fetchall()
+    transaction=alltransaction()
+    if request.method=="POST":
+        userid=request.form.get("search")
+        transaction=oneusertransaction(userid)
+        return render_template('transaction.html',user=transaction,id=id)
     return render_template('transaction.html',user=transaction,id=id)
 
 @views.route('/booked_seat/<id>', methods=["GET","POST"])
@@ -218,7 +218,7 @@ def purchase(id,location,movie,showid,hallno,showdate,showtime,seat):
         seatrow=seat[0]
         seatcol=int(seat[2:])
         ticket_num=f"{seatrow}-{seatcol}"
-        if user[-1]>amount:   
+        if user[-1]>=amount:   
             book_seat(id,showid,seatrow,seatcol)
             booking_id=getbookId(id,showid,seatrow,seatcol)
             booking_id=int(booking_id[0])

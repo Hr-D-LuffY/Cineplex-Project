@@ -30,6 +30,14 @@
     <h1 class="text-center fw-bold display-2 mt-4 p-1 text-white"><u>Deposite Box</u></h1>
   <!-- table section  -->
     <div class="table-responsive container mt-4 p-5">
+      <!-- Search section here  -->
+      <div class="dropdownsection my-4">
+        <form action="/deposite_box/{{id}}" method="post">
+          <label for="order_by" class="text-white fw-bold">Search By :  </label>
+          <input type="text" placeholder="Search The UserID" name="search" >
+          <input class="btn btn-primary "  type="submit" value="Submit">
+        </form>
+      </div> 
         <table class="table table-hover table-info table-striped">
             <thead class="table-warning">
               <tr>
